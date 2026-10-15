@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estação de Treino IoT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="marca">
+      <span class="marca-tag">CP5 · IoT</span>
+      <h1>Estação de Treino <span id="nome-estacao">estacao01</span></h1>
+    </div>
+    <div class="pilulas">
+      <span class="pilula" id="pill-broker"><i></i><b>Broker</b><em>conectando…</em></span>
+      <span class="pilula" id="pill-esp32"><i></i><b>ESP32</b><em>?</em></span>
+      <span class="pilula" id="pill-contador"><i></i><b>Contador</b><em>?</em></span>
+    </div>
+  </header>
+
+  <main class="grade">
+    <!-- STATUS DA MÁQUINA -->
+    <section class="card status desconhecido" id="card-status" aria-live="polite">
+      <div class="status-rotulo">Status da máquina</div>
+      <div class="status-estado" id="status-estado">AGUARDANDO</div>
+      <div class="status-aluno" id="status-aluno">Sem dados da estação ainda</div>
+      <div class="status-meta">
+        <span id="status-tempo"></span>
+        <span id="status-sessao" class="mono"></span>
+      </div>
+    </section>
+
+    <!-- REPETIÇÕES AO VIVO -->
+    <section class="card reps">
+      <div class="card-titulo">Repetições ao vivo</div>
+      <div class="reps-numero" id="reps-numero">0</div>
+      <div class="reps-serie" id="reps-serie">Nenhuma série em andamento</div>
+    </section>
+
+    <!-- ÚLTIMA SÉRIE -->
+    <section class="card ultima">
+      <div class="card-titulo">Última série concluída</div>
+      <div id="ultima-vazia" class="vazio">Nenhuma série recebida</div>
+      <div id="ultima-conteudo" hidden>
+        <div class="ultima-aluno" id="ultima-aluno"></div>
+        <div class="ultima-linha">
+          <div><span class="kpi" id="ultima-reps"></span><small>repetições</small></div>
+          <div><span class="kpi" id="ultima-serie"></span><small>série</small></div>
+          <div><span class="kpi" id="ultima-duracao"></span><small>duração</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTÓRICO DE SÉRIES -->
+    <section class="card historico">
+      <div class="card-titulo">
+        Histórico de séries
+        <button class="botao-link" id="btn-limpar" type="button">limpar</button>
+      </div>
+      <div class="tabela-wrap">
+        <table>
+          <thead>
+            <tr><th>Hora</th><th>Aluno</th><th>Série</th><th>Reps</th><th>Duração</th><th>Fim</th></tr>
+          </thead>
+          <tbody id="tabela-series"></tbody>
+        </table>
+        <div id="tabela-vazia" class="vazio">As séries aparecem aqui ao final de cada set</div>
+      </div>
+      <div class="resumo" id="resumo-alunos"></div>
+    </section>
+
+    <!-- EVENTOS DE ACESSO -->
+    <section class="card acessos">
+      <div class="card-titulo">Eventos RFID</div>
+      <ul class="lista-acessos" id="lista-acessos">
+        <li class="vazio">Nenhuma leitura de cartão ainda</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <details>
+      <summary>Configurações de conexão</summary>
+      <form id="form-config">
+        <label>Broker (WebSocket)
+          <input id="cfg-broker" type="text" spellcheck="false" required>
+        </label>
+        <label>Tópico base
+          <input id="cfg-base" type="text" spellcheck="false" required>
+        </label>
+        <button type="submit">Salvar e reconectar</button>
+      </form>
+    </details>
+    <span class="mono" id="rodape-topico"></span>
+  </footer>
+
+  <script src="https://unpkg.com/mqtt@5.10.1/dist/mqtt.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

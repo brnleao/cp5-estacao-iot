@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Modelos baixados automaticamente pelo contador
+*.pt
+*.task
+
+# Build do firmware (arduino-cli / Wokwi VS Code)
+firmware/**/build/
+
+# Sistema / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

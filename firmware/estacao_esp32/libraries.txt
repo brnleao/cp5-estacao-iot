@@ -1,0 +1,5 @@
+# Bibliotecas usadas pelo Wokwi (wokwi.com instala automaticamente)
+PubSubClient
+ArduinoJson
+LiquidCrystal I2C
+MFRC522

@@ -1,0 +1,7 @@
+# Usado apenas pela extensão Wokwi do VS Code.
+# Compile antes com:
+#   arduino-cli compile --fqbn esp32:esp32:esp32 --output-dir build .
+[wokwi]
+version = 1
+firmware = "build/estacao_esp32.ino.bin"
+elf = "build/estacao_esp32.ino.elf"

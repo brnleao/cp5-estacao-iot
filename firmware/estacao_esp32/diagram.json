@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "author": "CP5 - Estacao de Treino IoT",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": -150, "left": 140, "attrs": { "pins": "i2c" } },
+    { "type": "wokwi-led", "id": "ledVerde", "top": 30, "left": 260, "attrs": { "color": "green", "label": "LIVRE" } },
+    { "type": "wokwi-led", "id": "ledVermelho", "top": 30, "left": 320, "attrs": { "color": "red", "label": "OCUPADA" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 120, "left": 230, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 120, "left": 290, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 20, "left": 400, "attrs": { "volume": "0.1" } },
+    { "type": "wokwi-pushbutton", "id": "btnAna", "top": 240, "left": -200, "attrs": { "color": "green", "label": "Cartao Ana" } },
+    { "type": "wokwi-pushbutton", "id": "btnBruno", "top": 160, "left": -200, "attrs": { "color": "blue", "label": "Cartao Bruno" } },
+    { "type": "wokwi-pushbutton", "id": "btnDesconhecido", "top": 80, "left": -200, "attrs": { "color": "red", "label": "Cartao desconhecido" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "lcd:GND", "esp:GND.2", "black", [] ],
+    [ "lcd:VCC", "esp:5V", "red", [] ],
+    [ "lcd:SDA", "esp:21", "green", [] ],
+    [ "lcd:SCL", "esp:22", "purple", [] ],
+
+    [ "esp:26", "r1:1", "green", [] ],
+    [ "r1:2", "ledVerde:A", "green", [] ],
+    [ "ledVerde:C", "esp:GND.3", "black", [] ],
+
+    [ "esp:27", "r2:1", "orange", [] ],
+    [ "r2:2", "ledVermelho:A", "orange", [] ],
+    [ "ledVermelho:C", "esp:GND.3", "black", [] ],
+
+    [ "esp:25", "buzzer:2", "red", [] ],
+    [ "buzzer:1", "esp:GND.3", "black", [] ],
+
+    [ "btnAna:1.r", "esp:32", "green", [] ],
+    [ "btnAna:2.r", "esp:GND.1", "black", [] ],
+    [ "btnBruno:1.r", "esp:33", "blue", [] ],
+    [ "btnBruno:2.r", "esp:GND.1", "black", [] ],
+    [ "btnDesconhecido:1.r", "esp:14", "red", [] ],
+    [ "btnDesconhecido:2.r", "esp:GND.1", "black", [] ]
+  ],
+  "dependencies": {}
+}
