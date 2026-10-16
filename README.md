@@ -5,7 +5,9 @@
 
 ![Dashboard em tempo real](docs/img/dashboard.png)
 
-## Integrantes
+## Equipe
+
+**Ronaldos FC** — Turma 3ESPZ
 
 | Nome | RM |
 |---|---|
@@ -17,6 +19,7 @@
 
 ## Sumário
 
+- [Equipe](#equipe)
 - [O que o sistema faz](#o-que-o-sistema-faz)
 - [Arquitetura](#arquitetura)
 - [Tópicos MQTT](#tópicos-mqtt)
@@ -24,7 +27,6 @@
 - [Como executar](#como-executar)
 - [Decisões técnicas](#decisões-técnicas)
 - [Limitações e melhorias futuras](#limitações-e-melhorias-futuras)
-- [Integrantes](#integrantes)
 
 ## O que o sistema faz
 
